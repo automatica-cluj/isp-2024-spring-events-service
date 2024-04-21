@@ -12,6 +12,32 @@ This is a demo Java service for the ISP 2024 course.
 
 For running the application, you need to have Docker installed on your machine. When application is run using Docker Compose, it will start a MySQL database and the Java service. Details of the configuraiotns could be found in the `compose.yaml` file.
 
+### 
+
+Testing the application with curl:
+
+#### Create a new event ticket
+```curl -X POST -H "Content-type: application/json" -d "{\"eventName\":\"Concert\",\"ticketPrice\":100.0}" http://localhost:8080/eventTickets```
+
+#### Get all event tickets
+```curl http://localhost:8080/eventTickets```
+
+#### Get event ticket by id
+```curl http://localhost:8080/eventTickets/1```
+
+#### Buy a ticket
+```curl -X POST -H "Content-type: application/json" -d "{\"eventTicketId\": 2, \"buyerName\": \"John Doe\", \"isCheckedIn\": false}" http://localhost:8080/purchasedTickets```
+
+#### Get all purchased tickets
+```curl http://localhost:8080/purchasedTickets```
+
+#### Get purchased ticket by id
+```curl http://localhost:8080/purchasedTickets/1```
+
+#### Checkin a ticket
+```curl -X POST -H "Content-type: application/json" -d "{\"ticketId\": \"your_ticket_id\"}" "http://localhost:8080/tickets/checkin?ticketId=1"```
+
+
 ### Reference Documentation
 
 For further reference, please consider the following sections:
